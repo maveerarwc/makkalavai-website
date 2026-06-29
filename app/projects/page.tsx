@@ -79,7 +79,7 @@ export default function ProjectsPage() {
           return (
             <div key={article.id} className="border border-zinc-800">
               {/* Hero image */}
-              <div className="relative w-full h-64 md:h-96 overflow-hidden">
+              <div className="relative w-full h-52 md:h-96 overflow-hidden">
                 <img
                   src={article.image}
                   alt={article.title}

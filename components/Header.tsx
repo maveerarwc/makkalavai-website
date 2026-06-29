@@ -20,11 +20,11 @@ export default function Header() {
     <header className="bg-black border-b border-red-800">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between py-3">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="ICET Logo" width={70} height={70} className="rounded-full" />
-            <div>
-              <p className="text-yellow-400 text-sm font-semibold leading-tight">அனைத்துலக எழத்தமிழர் மக்களவை</p>
-              <p className="text-white text-base font-bold leading-tight">International Council Of Eelam Tamils</p>
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/logo.png" alt="ICET Logo" width={54} height={54} className="rounded-full shrink-0" />
+            <div className="min-w-0">
+              <p className="text-yellow-400 text-xs font-semibold leading-tight truncate">அனைத்துலக எழத்தமிழர் மக்களவை</p>
+              <p className="text-white text-sm font-bold leading-tight">International Council Of Eelam Tamils</p>
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-2">

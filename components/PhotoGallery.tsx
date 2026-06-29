@@ -22,7 +22,7 @@ export default function PhotoGallery({ photos, alt }: { photos: string[]; alt: s
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[140px] gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[120px] md:auto-rows-[140px] gap-1 md:gap-2">
         {photos.map((photo, i) => (
           <div
             key={photo}
@@ -52,7 +52,7 @@ export default function PhotoGallery({ photos, alt }: { photos: string[]; alt: s
             ×
           </button>
           <button
-            className="absolute left-2 md:left-8 text-white text-4xl z-10 px-3 py-2 hover:text-red-400"
+            className="absolute left-0 md:left-6 text-white text-5xl z-10 px-4 py-8 hover:text-red-400 active:text-red-400"
             onClick={e => { e.stopPropagation(); showPrev() }}
           >
             ‹
@@ -63,10 +63,10 @@ export default function PhotoGallery({ photos, alt }: { photos: string[]; alt: s
             draggable={false}
             onContextMenu={e => e.preventDefault()}
             onClick={e => e.stopPropagation()}
-            className="max-h-[90vh] max-w-[85vw] object-contain select-none"
+            className="max-h-[85vh] max-w-[80vw] object-contain select-none"
           />
           <button
-            className="absolute right-2 md:right-8 text-white text-4xl z-10 px-3 py-2 hover:text-red-400"
+            className="absolute right-0 md:right-6 text-white text-5xl z-10 px-4 py-8 hover:text-red-400 active:text-red-400"
             onClick={e => { e.stopPropagation(); showNext() }}
           >
             ›

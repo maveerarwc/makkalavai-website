@@ -13,7 +13,7 @@ export default function AboutPage() {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="bg-zinc-900 border-b border-zinc-800 py-16 px-4">
+      <div className="bg-zinc-900 border-b border-zinc-800 py-10 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-1 h-8 bg-red-700" />
@@ -25,7 +25,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
+      <div className="max-w-4xl mx-auto px-4 py-8 md:py-16 space-y-8 md:space-y-12">
 
         <div>
           <h2 className="text-2xl font-bold text-white mb-4 border-l-4 border-red-700 pl-4">Mission</h2>

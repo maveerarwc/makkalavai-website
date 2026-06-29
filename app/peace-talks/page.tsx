@@ -36,7 +36,7 @@ export default function PeaceTalksPage() {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="bg-zinc-900 border-b border-zinc-800 py-16 px-4">
+      <div className="bg-zinc-900 border-b border-zinc-800 py-10 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-1 h-8 bg-red-700" />
@@ -90,9 +90,10 @@ export default function PeaceTalksPage() {
                 </div>
                 <iframe
                   src={talk.pdf}
-                  className="w-full h-96 border border-zinc-700"
+                  className="hidden md:block w-full h-96 border border-zinc-700"
                   title={talk.title}
                 />
+                <p className="md:hidden text-gray-500 text-xs mt-2">Open the PDF via the button above to view the document.</p>
               </div>
             </div>
           ))}

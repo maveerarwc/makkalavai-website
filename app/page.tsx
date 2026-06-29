@@ -10,12 +10,10 @@ export default function Home() {
         <div className="absolute inset-0 bg-[url('/hero-bg.jpg')] bg-cover bg-center opacity-30" />
         <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
           <Image src="/logo.png" alt="ICET Logo" width={130} height={130} className="mx-auto mb-8 rounded-full" />
-          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
-            Coordinating the Global<br />
-            <span className="text-red-500">Tamil Diaspora</span> for Rights,<br />
-            Justice & Self-Determination
+          <h1 className="text-3xl md:text-6xl font-bold text-white leading-tight mb-6">
+            Coordinating the Global <span className="text-red-500">Tamil Diaspora</span> for Rights, Justice & Self-Determination
           </h1>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
             We, Tamil Country Councils, Federation and Forums from many countries, recognizing the need to speak with one voice in asserting our legitimate rights, needs and concerns, wish to express our support for one International Council of Eelam Tamils to coordinate and represent the Diaspora Tamils internationally.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

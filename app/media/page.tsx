@@ -38,7 +38,7 @@ export default function MediaPage() {
 
   return (
     <div className="bg-black min-h-screen">
-      <div className="bg-zinc-900 border-b border-zinc-800 py-16 px-4">
+      <div className="bg-zinc-900 border-b border-zinc-800 py-10 md:py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-1 h-8 bg-red-700" />
