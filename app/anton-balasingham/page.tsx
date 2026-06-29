@@ -15,6 +15,9 @@ export default function AntonBalasinghamPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-16 space-y-12">
+        <div className="flex justify-center">
+          <img src="/Anton Balasingam.avif" alt="Anton Balasingham" className="w-64 h-64 object-cover rounded-full border-4 border-red-700" />
+        </div>
 
         <div>
           <h2 className="text-2xl font-bold text-white mb-6 border-l-4 border-red-700 pl-4">Who Was Anton Balasingham?</h2>
