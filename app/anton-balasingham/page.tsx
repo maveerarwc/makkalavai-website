@@ -1,3 +1,4 @@
+'use client'
 export default function AntonBalasinghamPage() {
   const photos = [
     '1-11.jpg','2-7.jpg','3-5.jpg','4-6.jpg','5-5.jpg','6-5.jpg',
