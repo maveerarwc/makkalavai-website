@@ -29,8 +29,8 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold mb-3 text-sm uppercase tracking-wider">Stay Connected</h3>
             <p className="text-gray-400 text-sm mb-4">Stay informed about our global Tamil advocacy work.</p>
-            <Link href="/donate" className="bg-red-700 hover:bg-red-600 text-white text-sm px-5 py-2 font-semibold transition inline-block">
-              Support Our Cause
+            <Link href="/contact" className="bg-red-700 hover:bg-red-600 text-white text-sm px-5 py-2 font-semibold transition inline-block">
+              Contact Us
             </Link>
           </div>
         </div>

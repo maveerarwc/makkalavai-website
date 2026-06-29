@@ -11,7 +11,6 @@ const navLinks = [
   { href: '/anton-balasingham', label: 'Anton Balasingham' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
-  { href: '/donate', label: 'Donate' },
 ]
 
 export default function Header() {
@@ -29,7 +28,6 @@ export default function Header() {
             </div>
           </Link>
           <div className="hidden md:flex items-center gap-2">
-            <Link href="/donate" className="bg-red-700 hover:bg-red-600 text-white text-sm px-4 py-2 font-semibold transition">Donation</Link>
             <Link href="/contact" className="border border-gray-500 hover:border-white text-white text-sm px-4 py-2 font-semibold transition">Contact</Link>
           </div>
           <button className="md:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
