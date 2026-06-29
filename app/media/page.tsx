@@ -1,35 +1,57 @@
-'use client'
-import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabase'
-import Image from 'next/image'
+import fs from 'fs'
+import path from 'path'
+import MediaGallerySupabase from '@/components/MediaGallerySupabase'
 
-type Photo = {
-  id: string
-  title: string
-  image_url: string
-  category: string
-  created_at: string
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif']
+
+const PROJECT_DESCRIPTIONS: Record<string, { date: string; text: string }> = {
+  'Ezhu Thamila 2026': {
+    date: '22.06.2026',
+    text: `On 22 June 2026, Tamils from across Europe gathered in Brussels, Belgium, for the annual Urimaikkaha Ezhu Tamila protest. Youth, families, activists, and members of the public travelled from numerous countries to take part in a united call for justice for the Tamil genocide and the liberation of Tamileelam.
+
+The day's events began with a march through the streets of Brussels. Accompanied by drums, slogans, and national flags, participants carried banners highlighting the ongoing realities faced by Tamils in their homeland. The march passed through key areas of the city and attracted the attention of members of the public, tourists, and international institutions based in Brussels.
+
+Following the rally, participants gathered for the main event programme. The Common Flame of Remembrance (Pothu Chudar) was lit, followed by tributes to the martyrs and civilians who gave their lives during the Tamil national struggle. Floral tributes were placed and a moment of silence was observed in remembrance of all those who lost their lives.
+
+Speakers from different countries reflected on the continued challenges facing the Tamil people seventeen years after the end of the armed conflict. They highlighted ongoing militarisation, land occupation, enforced disappearances, political repression, and the lack of meaningful international accountability. Speakers stressed that despite repeated calls for justice, the Tamil national question remains unresolved.
+
+A recurring message throughout the day was the responsibility of the younger generation to continue raising the Tamil cause on international platforms. Youth representatives reaffirmed their commitment to ensuring that the history, rights, and aspirations of the Tamil nation are not forgotten.
+
+The event also featured cultural performances and artistic presentations which reflected the resilience and determination of the Tamil people. The programme concluded with the reading of a declaration reaffirming the Tamil nation's demand for justice, self-determination, and a permanent political solution based on the recognition of the Tamil people's collective rights.
+
+As the event came to a close, participants joined together in singing "Nambungal Tamileelam," bringing an emotional end to a day marked by remembrance, unity, and determination.
+
+Urimaikkaha Ezhu Tamila 2026 was organised by the Tamil Youth Organization (TYO) in coordination with Anaithulaga Thodarpakam and with the support of the Tamil Coordinating Committee (TCC) and the International Council of Eelam Tamils (ICET).
+
+The strong participation witnessed in Brussels once again demonstrated that the Tamil people's demand for justice, freedom, and self-determination continues to live on across generations and across borders.`,
+  },
+}
+
+function getMediaProjects() {
+  const mediaDir = path.join(process.cwd(), 'public', 'Media')
+  if (!fs.existsSync(mediaDir)) return []
+
+  return fs
+    .readdirSync(mediaDir, { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .map(entry => {
+      const folderName = entry.name
+      const folderPath = path.join(mediaDir, folderName)
+      const photos = fs
+        .readdirSync(folderPath)
+        .filter(file => IMAGE_EXTENSIONS.includes(path.extname(file).toLowerCase()))
+        .sort()
+
+      const title = folderName.replace(/^\d+_/, '')
+
+      return { folderName, title, photos }
+    })
+    .filter(project => project.photos.length > 0)
+    .sort((a, b) => a.folderName.localeCompare(b.folderName))
 }
 
 export default function MediaPage() {
-  const [photos, setPhotos] = useState<Photo[]>([])
-  const [selected, setSelected] = useState<string | null>(null)
-  const [categories, setCategories] = useState<string[]>([])
-  const [activeCategory, setActiveCategory] = useState('All')
-
-  useEffect(() => {
-    async function fetchPhotos() {
-      const { data } = await supabase.from('photos').select('*').order('created_at', { ascending: false })
-      if (data) {
-        setPhotos(data)
-        const cats = ['All', ...Array.from(new Set(data.map((p: Photo) => p.category).filter(Boolean)))]
-        setCategories(cats)
-      }
-    }
-    fetchPhotos()
-  }, [])
-
-  const filtered = activeCategory === 'All' ? photos : photos.filter(p => p.category === activeCategory)
+  const projects = getMediaProjects()
 
   return (
     <div className="bg-black min-h-screen">
@@ -45,47 +67,42 @@ export default function MediaPage() {
         </div>
       </div>
 
-      {categories.length > 1 && (
-        <div className="border-b border-zinc-800">
-          <div className="max-w-6xl mx-auto px-4 flex gap-1 overflow-x-auto">
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-3 text-sm font-semibold whitespace-nowrap transition ${activeCategory === cat ? 'bg-red-700 text-white' : 'text-gray-400 hover:text-white'}`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-6xl mx-auto px-4 py-12">
-        {filtered.length === 0 ? (
-          <p className="text-gray-500 text-center py-20">No photos yet.</p>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-            {filtered.map(photo => (
-              <div key={photo.id} className="relative aspect-video overflow-hidden cursor-pointer group" onClick={() => setSelected(photo.image_url)}>
-                <img src={photo.image_url} alt={photo.title} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-                {photo.title && (
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-end p-3">
-                    <p className="text-white text-sm font-medium">{photo.title}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+      <div className="max-w-6xl mx-auto px-4 py-16 space-y-16">
+        {projects.length === 0 && (
+          <p className="text-gray-500 text-center">No photos have been added yet.</p>
         )}
-      </div>
 
-      {selected && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
-          <img src={selected} alt="" className="max-h-[90vh] max-w-[90vw] object-contain" />
-          <button className="absolute top-4 right-4 text-white text-3xl" onClick={() => setSelected(null)}>×</button>
-        </div>
-      )}
+        {projects.map(project => {
+          const description = PROJECT_DESCRIPTIONS[project.title]
+          return (
+          <div key={project.folderName}>
+            <h2 className="text-2xl font-bold text-white mb-2 border-l-4 border-red-700 pl-4">
+              {project.title}
+            </h2>
+            {description && (
+              <div className="border-l-4 border-zinc-700 pl-4 mb-6">
+                <p className="text-yellow-400 text-sm font-semibold mb-3">{description.date}</p>
+                {description.text.split('\n\n').map((paragraph, i) => (
+                  <p key={i} className="text-gray-400 leading-relaxed mb-4">{paragraph}</p>
+                ))}
+              </div>
+            )}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              {project.photos.map(photo => (
+                <img
+                  key={photo}
+                  src={`/Media/${project.folderName}/${photo}`}
+                  alt={project.title}
+                  className="w-full h-48 object-cover hover:opacity-80 transition cursor-pointer"
+                />
+              ))}
+            </div>
+          </div>
+          )
+        })}
+
+        <MediaGallerySupabase />
+      </div>
     </div>
   )
 }
