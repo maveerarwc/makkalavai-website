@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <Image src="/logo.png" alt="ICET Logo" width={60} height={60} className="rounded-full" />
               <div>
-                <p className="text-yellow-400 text-xs">அனைத்துலக எழத்தமிழர் மக்களவை</p>
+                <p className="text-yellow-400 text-xs">அனைத்துலக ஈழத்தமிழர் மக்களவை</p>
                 <p className="text-white text-sm font-bold">International Council of Eelam Tamils</p>
               </div>
             </div>

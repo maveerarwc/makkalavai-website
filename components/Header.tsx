@@ -23,7 +23,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2">
             <Image src="/logo.png" alt="ICET Logo" width={54} height={54} className="rounded-full shrink-0" />
             <div className="min-w-0">
-              <p className="text-yellow-400 text-xs font-semibold leading-tight truncate">அனைத்துலக எழத்தமிழர் மக்களவை</p>
+              <p className="text-yellow-400 text-xs font-semibold leading-tight truncate">அனைத்துலக ஈழத்தமிழர் மக்களவை</p>
               <p className="text-white text-sm font-bold leading-tight">International Council Of Eelam Tamils</p>
             </div>
           </Link>
