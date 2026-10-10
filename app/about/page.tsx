@@ -59,7 +59,7 @@ export default function AboutPage() {
         <div className="bg-zinc-900 border border-zinc-800 p-6">
           <p className="text-yellow-400 font-semibold mb-2">Registration</p>
           <p className="text-gray-400 text-sm">Registration Number: 1018.804.460</p>
-          <p className="text-gray-400 text-sm mt-1">Email: belgium@tamilyouthorganisation.com</p>
+          <p className="text-gray-400 text-sm mt-1">Email: icetoffice1@gmail.com</p>
         </div>
 
       </div>

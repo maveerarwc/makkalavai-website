@@ -18,8 +18,8 @@ export default function DonatePage() {
         <div className="bg-zinc-900 border border-zinc-800 p-8 mb-8">
           <h2 className="text-white font-bold text-xl mb-4">Bank Transfer</h2>
           <p className="text-gray-400 text-sm mb-2">For donation details, please contact us at:</p>
-          <a href="mailto:belgium@tamilyouthorganisation.com" className="text-red-400 hover:text-red-300 transition font-semibold">
-            belgium@tamilyouthorganisation.com
+          <a href="mailto:icetoffice1@gmail.com" className="text-red-400 hover:text-red-300 transition font-semibold">
+            icetoffice1@gmail.com
           </a>
         </div>
         <p className="text-gray-600 text-sm">All donations go directly towards Tamil advocacy and community support programs.</p>
