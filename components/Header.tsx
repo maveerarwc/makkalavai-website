@@ -7,6 +7,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/media', label: 'Media' },
   { href: '/projects', label: 'Projects' },
+  { href: '/statements', label: 'Statements' },
   { href: '/peace-talks', label: 'Peace Talks' },
   { href: '/anton-balasingham', label: 'Anton Balasingham' },
   { href: '/about', label: 'About' },
