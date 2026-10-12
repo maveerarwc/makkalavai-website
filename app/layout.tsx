@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     description: 'Coordinating the Global Tamil Diaspora for Rights, Justice & Self-Determination',
     images: ['https://makkalavai.com/logo.png'],
   },
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
