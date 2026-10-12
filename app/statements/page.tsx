@@ -52,9 +52,17 @@ export default function StatementsPage() {
                 Open PDF ↗
               </a>
             </div>
+            {/* Desktop: native PDF embed */}
             <iframe
               src={statement.path}
-              className="w-full border border-zinc-800"
+              className="hidden md:block w-full border border-zinc-800"
+              style={{ height: '85vh' }}
+              title={statement.title}
+            />
+            {/* Mobile: Google Docs viewer scales PDF to screen width */}
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(`https://makkalavai.com${statement.path}`)}&embedded=true`}
+              className="block md:hidden w-full border border-zinc-800"
               style={{ height: '85vh' }}
               title={statement.title}
             />
