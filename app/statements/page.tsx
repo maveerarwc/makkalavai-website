@@ -54,21 +54,10 @@ export default function StatementsPage() {
             </div>
             <iframe
               src={statement.path}
-              className="hidden md:block w-full border border-zinc-800"
+              className="w-full border border-zinc-800"
               style={{ height: '85vh' }}
               title={statement.title}
             />
-            <div className="md:hidden bg-zinc-900 border border-zinc-800 p-4 text-center">
-              <p className="text-gray-400 text-sm mb-3">Tap below to read the full statement.</p>
-              <a
-                href={statement.path}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-red-700 hover:bg-red-600 text-white text-sm px-6 py-2 font-semibold transition inline-block"
-              >
-                Open Statement ↗
-              </a>
-            </div>
           </div>
         ))}
 
