@@ -49,7 +49,7 @@ export default function StatementsPage() {
                 rel="noopener noreferrer"
                 className="text-red-400 hover:text-red-300 text-xs font-semibold border border-red-700 px-3 py-1 transition shrink-0 ml-4"
               >
-                Open PDF ↗
+                Open PDF
               </a>
             </div>
             {/* Desktop: native PDF embed */}
@@ -60,12 +60,15 @@ export default function StatementsPage() {
               title={statement.title}
             />
             {/* Mobile: Google Docs viewer scales PDF to screen width */}
-            <iframe
-              src={`https://docs.google.com/viewer?url=${encodeURIComponent(`https://makkalavai.com${statement.path}`)}&embedded=true`}
-              className="block md:hidden w-full border border-zinc-800"
-              style={{ height: '85vh' }}
-              title={statement.title}
-            />
+            <div className="block md:hidden relative w-full border border-zinc-800" style={{ height: '85vh' }}>
+              <iframe
+                src={`https://docs.google.com/viewer?url=${encodeURIComponent(`https://makkalavai.com${statement.path}`)}&embedded=true`}
+                className="w-full h-full"
+                title={statement.title}
+              />
+              {/* Hide Google Docs "open in new tab" arrow button */}
+              <div className="absolute top-0 right-0 w-12 h-12 bg-white pointer-events-none" />
+            </div>
           </div>
         ))}
 
