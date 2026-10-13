@@ -60,15 +60,12 @@ export default function StatementsPage() {
               title={statement.title}
             />
             {/* Mobile: Google Docs viewer scales PDF to screen width */}
-            <div className="block md:hidden relative w-full border border-zinc-800" style={{ height: '85vh' }}>
-              <iframe
-                src={`https://docs.google.com/viewer?url=${encodeURIComponent(`https://makkalavai.com${statement.path}`)}&embedded=true`}
-                className="w-full h-full"
-                title={statement.title}
-              />
-              {/* Hide Google Docs "open in new tab" arrow button */}
-              <div className="absolute top-0 right-0 w-12 h-12 bg-white pointer-events-none" />
-            </div>
+            <iframe
+              src={`https://docs.google.com/viewer?url=${encodeURIComponent(`https://makkalavai.com${statement.path}`)}&embedded=true`}
+              className="block md:hidden w-full border border-zinc-800"
+              style={{ height: '85vh' }}
+              title={statement.title}
+            />
           </div>
         ))}
 
